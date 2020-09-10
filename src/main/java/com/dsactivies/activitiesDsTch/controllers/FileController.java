@@ -19,6 +19,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Map;
 
 @Controller
 public class FileController {
@@ -61,8 +62,13 @@ public class FileController {
             files.setNamId(file.getOriginalFilename() + actId + Counts.getFileCount());
             files.setName(file.getOriginalFilename());
             files.setSize(Size);
-            String url =  fileService.uploadFile(file);
+            Map uploadResult =  fileService.uploadFile(file);
+            String format = uploadResult.get("format").toString();
+            String url = uploadResult.get("url").toString();
+            String name = uploadResult.get("public_id").toString();
             files.setLocation(url);
+            files.setFormat(format);
+            files.setPublicId(name);
             Fr.save(files);
             redirectAttributes.addFlashAttribute("message",
                     "Você conseguiu enviar! " + file.getOriginalFilename() + "!");
@@ -76,7 +82,7 @@ public class FileController {
         String Dir = files.getName();
         byte[] arquivo = Files.readAllBytes( Paths.get(files.getLocation()));
         HttpHeaders httpHeaders = new HttpHeaders();
-        httpHeaders.add("Content-Disposition", "attachment;filename=\""+ files.getName() +"\"");
+        httpHeaders.add("Content-Disposition", "attachment;filename=\""+ files.getPublicId()+"."+ files.getFormat() + "\"");
         HttpEntity<byte[]> entity = new HttpEntity<byte[]>( arquivo/*, httpHeaders*/);
         return entity;
     }
