@@ -35,7 +35,7 @@ public class FIleService {
             /*Path copyLocation = Paths
                     .get(uploadDir + File.separator + StringUtils.cleanPath(file.getOriginalFilename()));
             Files.copy(file.getInputStream(), copyLocation, StandardCopyOption.REPLACE_EXISTING);*/
-            return  uploadResult.get("url").toString();
+            return  uploadResult.get("public_id").toString();
         } catch (Exception e) {
             e.printStackTrace();
             throw new FileStorageException("Could not store file " + file.getOriginalFilename()
