@@ -94,6 +94,9 @@ private Cloudinary cloudinaryConfig;
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.add("Content-Disposition", "attachment;filename=\""+ files.getPublicId()+"."+ files.getFormat() + "\"");
         HttpEntity<byte[]> entity = new HttpEntity<byte[]>( arquivo, httpHeaders);
+        System.out.println(entity);
+        System.out.println(arquivo);
+        System.out.println(httpHeaders);
         return entity;
     }
 }
