@@ -61,8 +61,9 @@ public class FileController {
             files.setNamId(file.getOriginalFilename() + actId + Counts.getFileCount());
             files.setName(file.getOriginalFilename());
             files.setSize(Size);
+            String url =  fileService.uploadFile(file);
+            files.setLocation(url);
             Fr.save(files);
-            fileService.uploadFile(file);
             redirectAttributes.addFlashAttribute("message",
                     "Você conseguiu enviar! " + file.getOriginalFilename() + "!");
             return "redirect:/up/{actId}";
@@ -73,7 +74,7 @@ public class FileController {
     public HttpEntity<byte[]> download(@PathVariable(value="namId") String namId) throws IOException {
         FilesDoc files = Fr.findByNamId(namId);
         String Dir = files.getName();
-        byte[] arquivo = Files.readAllBytes( Paths.get(uploadDir + File.separator + StringUtils.cleanPath(Dir)));
+        byte[] arquivo = Files.readAllBytes( Paths.get(files.getLocation()));
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.add("Content-Disposition", "attachment;filename=\""+ files.getName() +"\"");
         HttpEntity<byte[]> entity = new HttpEntity<byte[]>( arquivo, httpHeaders);

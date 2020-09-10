@@ -1,8 +1,6 @@
 package com.dsactivies.activitiesDsTch.Services;
 
-import com.dsactivies.activitiesDsTch.models.FilesDoc;
-import com.dsactivies.activitiesDsTch.repository.CodeActivitiesRepository;
-import com.dsactivies.activitiesDsTch.repository.FilesRepository;
+import com.cloudinary.utils.ObjectUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -10,13 +8,17 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 import com.cloudinary.Cloudinary;
 
+
+
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.Map;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
-import java.io.IOException;
-import java.util.Map;
+
 
 @Service
 public class FIleService {
@@ -26,7 +28,7 @@ public class FIleService {
     @Value("${app.upload.dir:${user.home}}")
     public String uploadDir;
 
-    public void uploadFile(MultipartFile file) {
+    public String uploadFile(MultipartFile file) {
         try {
             File uploadedFile = convertMultiPartToFile(file);
             Map uploadResult = cloudinaryConfig.uploader().upload(uploadedFile, ObjectUtils.emptyMap());
@@ -40,7 +42,7 @@ public class FIleService {
                     + ". Please try again!");
         }
     }
-    public class FileStorageException extends RuntimeException throws IOException{
+    public class FileStorageException extends RuntimeException {
 
         private static final long serialVersionUID = 1L;
         private String msg;
@@ -53,5 +55,11 @@ public class FIleService {
             return msg;
         }
     }
-
+    private File convertMultiPartToFile(MultipartFile file) throws IOException {
+        File convFile = new File(file.getOriginalFilename());
+        FileOutputStream fos = new FileOutputStream(convFile);
+        fos.write(file.getBytes());
+        fos.close();
+        return convFile;
+    }
 }

@@ -61,4 +61,11 @@ public class FilesDoc {
         this.event = event;
     }
 
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
 }
