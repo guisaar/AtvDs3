@@ -28,14 +28,11 @@ public class FIleService {
     @Value("${app.upload.dir:${user.home}}")
     public String uploadDir;
 
-    public String uploadFile(MultipartFile file) {
+    public Map uploadFile(MultipartFile file) {
         try {
             File uploadedFile = convertMultiPartToFile(file);
             Map uploadResult = cloudinaryConfig.uploader().upload(uploadedFile, ObjectUtils.emptyMap());
-            /*Path copyLocation = Paths
-                    .get(uploadDir + File.separator + StringUtils.cleanPath(file.getOriginalFilename()));
-            Files.copy(file.getInputStream(), copyLocation, StandardCopyOption.REPLACE_EXISTING);*/
-            return  uploadResult.get("public_id").toString();
+            return  uploadResult;
         } catch (Exception e) {
             e.printStackTrace();
             throw new FileStorageException("Could not store file " + file.getOriginalFilename()
