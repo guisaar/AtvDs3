@@ -99,7 +99,7 @@
     <tr th:each="files : ${files}">
         <td><a th:href="@{${(#mvc.url('FC#download').arg(0, files.namId)).build()}}"><span th:text="${files.name}"> </span></a></td>
         <td><span th:text="${files.size}"></span></td>
-        <td><span th:text="${files.location}"></span></td>
+        <td><span th:text="${files.date}"></span></td>
     </tr>
     </tbody>
     </table>
