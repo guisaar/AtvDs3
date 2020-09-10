@@ -1,9 +1,12 @@
 package com.dsactivies.activitiesDsTch.controllers;
 
+import com.cloudinary.Cloudinary;
+import com.cloudinary.utils.ObjectUtils;
 import com.dsactivies.activitiesDsTch.Services.FIleService;
 import com.dsactivies.activitiesDsTch.models.*;
 import com.dsactivies.activitiesDsTch.repository.CodeActivitiesRepository;
 import com.dsactivies.activitiesDsTch.repository.FilesRepository;
+import org.apache.http.client.utils.URIBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
@@ -16,10 +19,13 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.nio.file.Files;
-import java.nio.file.Paths;
+import java.util.HashMap;
 import java.util.Map;
+import java.nio.file.Paths;
 
 @Controller
 public class FileController {
@@ -29,6 +35,10 @@ public class FileController {
     private CodeActivitiesRepository er;
     @Autowired
     private FilesRepository Fr;
+// AQUI
+@Autowired
+private Cloudinary cloudinaryConfig;
+// AQUI
 
     @Autowired
     FIleService fileService;
@@ -77,16 +87,16 @@ public class FileController {
     }
 
     @RequestMapping(value="/dw/{namId}", method=RequestMethod.GET)
-    public HttpEntity<byte[]> download(@PathVariable(value="namId") String namId) throws IOException {
+    public HttpEntity<byte[]> download(@PathVariable(value="namId") String namId) throws Exception {
         FilesDoc files = Fr.findByNamId(namId);
-        String Dir = files.getName();
+        String Dir = files.getPublicId();
+        //Aqui
+        cloudinaryConfig.privateDownload(files.getPublicId(), files.getFormat(), ObjectUtils.emptyMap());
+        //aqui
         byte[] arquivo = Files.readAllBytes( Paths.get(files.getLocation()));
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.add("Content-Disposition", "attachment;filename=\""+ files.getPublicId()+"."+ files.getFormat() + "\"");
-        HttpEntity<byte[]> entity = new HttpEntity<byte[]>( arquivo/*, httpHeaders*/);
-        System.out.println(httpHeaders);
-        System.out.println(entity);
-        System.out.println(arquivo);
+        HttpEntity<byte[]> entity = new HttpEntity<byte[]>( arquivo, httpHeaders);
         return entity;
     }
 }
