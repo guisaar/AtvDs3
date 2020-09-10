@@ -77,7 +77,7 @@ public class FileController {
         byte[] arquivo = Files.readAllBytes( Paths.get(files.getLocation()));
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.add("Content-Disposition", "attachment;filename=\""+ files.getName() +"\"");
-        HttpEntity<byte[]> entity = new HttpEntity<byte[]>( arquivo, httpHeaders);
+        HttpEntity<byte[]> entity = new HttpEntity<byte[]>( arquivo/*, httpHeaders*/);
         return entity;
     }
 }
