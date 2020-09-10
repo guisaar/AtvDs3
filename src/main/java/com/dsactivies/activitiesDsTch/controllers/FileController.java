@@ -92,7 +92,6 @@ private Cloudinary cloudinaryConfig;
         String Dir = files.getPublicId();
         //Aqui
         cloudinaryConfig.privateDownload(files.getPublicId(), files.getFormat(), ObjectUtils.emptyMap());
-        system.out.println(cloudinaryConfig.privateDownload(files.getPublicId(), files.getFormat(), ObjectUtils.emptyMap()));
         //aqui
         byte[] arquivo = Files.readAllBytes( Paths.get(files.getLocation()));
         HttpHeaders httpHeaders = new HttpHeaders();
