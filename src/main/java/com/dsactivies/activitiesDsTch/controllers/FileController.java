@@ -90,9 +90,6 @@ private Cloudinary cloudinaryConfig;
     public HttpEntity<byte[]> download(@PathVariable(value="namId") String namId) throws Exception {
         FilesDoc files = Fr.findByNamId(namId);
         String Dir = files.getPublicId();
-        //Aqui
-        cloudinaryConfig.privateDownload(files.getPublicId(), files.getFormat(), ObjectUtils.emptyMap());
-        //aqui
         byte[] arquivo = Files.readAllBytes( Paths.get(files.getLocation()));
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.add("Content-Disposition", "attachment;filename=\""+ files.getPublicId()+"."+ files.getFormat() + "\"");
