@@ -85,6 +85,8 @@ public class FileController {
         httpHeaders.add("Content-Disposition", "attachment;filename=\""+ files.getPublicId()+"."+ files.getFormat() + "\"");
         HttpEntity<byte[]> entity = new HttpEntity<byte[]>( arquivo/*, httpHeaders*/);
         System.out.println(httpHeaders);
+        System.out.println(entity);
+        System.out.println(arquivo);
         return entity;
     }
 }
