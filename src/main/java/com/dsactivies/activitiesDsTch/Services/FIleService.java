@@ -32,9 +32,9 @@ public class FIleService {
         try {
             File uploadedFile = convertMultiPartToFile(file);
             Map uploadResult = cloudinaryConfig.uploader().upload(uploadedFile, ObjectUtils.emptyMap());
-            Path copyLocation = Paths
+            /*Path copyLocation = Paths
                     .get(uploadDir + File.separator + StringUtils.cleanPath(file.getOriginalFilename()));
-            Files.copy(file.getInputStream(), copyLocation, StandardCopyOption.REPLACE_EXISTING);
+            Files.copy(file.getInputStream(), copyLocation, StandardCopyOption.REPLACE_EXISTING);*/
             return  uploadResult.get("url").toString();
         } catch (Exception e) {
             e.printStackTrace();
