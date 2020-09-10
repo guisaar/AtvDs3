@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Validação</title>
+</head>
+<body>
+
+<div role="alert" th:if="${not #strings.isEmpty(mensagem)}">
+    <h1 style="color:red;font-size:30px;"><span th:text="${mensagem}"></span></h1>
+</div>
+</body>
+</html>

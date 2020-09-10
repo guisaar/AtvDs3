@@ -1,0 +1,221 @@
+:root {
+  --main-bg-color:#313793cf /*#57b6d2*/;
+  --site-size: 900px;
+}
+html {
+margin, border: 0px;
+font-family: 'Raleway';
+}
+h1 {
+color:black;
+font-weight:normal;
+text-align:center;
+}
+body {
+width:99%;
+min-height:var(--site-size);
+background-image:url("GifFundo.gif");
+background-repeat: no-repeat;
+background-size: 100% 100%;
+background-attachment: fixed;
+}
+.container {
+margin-left: 12%;
+margin-right:12%;
+background-color:var(--main-bg-color);
+min-height:300px;
+border-radius: 20px;
+padding:5px;
+}
+.containerForm {
+margin-left: 12%;
+margin-right:12%;
+background-color:var(--main-bg-color);
+min-height:200px;
+border-radius: 20px;
+padding:5px;
+}
+.containerForm #Details {
+height:500px;
+}
+a {
+text-decoration:none;
+color:white;
+}
+a:hover {
+color:red;
+}
+
+.Table {
+width:99%;
+height:auto;
+}
+.Table th {
+ border-bottom:1px black solid;
+ color:white;
+ width:18%;
+}
+.Table td {
+text-align:center;
+color:white;
+height:18px;
+}
+.Table #diferente {
+ border-bottom:none;
+ width:10%;
+background-color:#26a69a;
+}
+.Table #diferente img{
+ float:left;
+}
+.Table #diferente #ladinho{
+ float:left;
+   align-items: center;
+   justify-content: center;
+ font-weight:bold;
+ font-size:22px;
+ font-family: 'Material Icons';
+}
+
+input {
+  background:none;
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: none;
+  border-bottom: 3px solid black;
+font-family: 'Raleway';
+color:white;
+}
+.input-field-col-s2 {
+    width: 15%;
+    margin-right:8%;
+    float:right;
+color:white;
+}
+
+.input-field-col-s3 {
+    width: 15%;
+    margin-right:5%;
+    float:right;
+color:white;
+}
+.input-field-col-s6 {
+    width: 55%;
+float:left;
+margin-right:2%;
+color:white;
+}
+.input-field-col-s10 {
+    width: 92%;
+float:left;
+color:white;
+}
+.input-field-col-s4 {
+    width: 35%;
+float:left;
+margin-right:2%;
+color:white;
+}
+input[type=text]:focus {
+  background-color: lightblue;
+  color:black;
+  font-weight:bold;
+}
+.button {
+  background-color: #26a69a; /* Green */
+  border: none;
+  color: white;
+  justify-content: center;
+  padding: 7px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+border-radius: 5px;
+}
+.button:hover {
+color:red;
+}
+#button{
+padding: 7px 5px;
+}
+#ladinho2{
+float:left;
+align-items: center;
+justify-content: center;
+ }
+
+
+
+.TableDetails {
+width:60%;
+height:30px;
+}
+.TableDetails th {
+ text-align:left;
+ color:white;
+ width:18%;
+}
+
+#Describe {
+ width: 30%;
+ margin-right:5%;
+ float:right;
+ color:white;
+}
+
+#Describe td {
+ min-height:120px;
+ border: 3px solid black;
+margin: 8px 0;
+padding: 12px 20px;
+
+}
+#Discipline {
+ width: 15%;
+ margin-right:5%;
+ float:right;
+ color:white;
+}
+
+#TimeTable {
+ width: 15%;
+ margin-right:5%;
+ float:right;
+ color:white;
+}
+
+#Date {
+ width: 15%;
+ margin-right:5%;
+ float:right;
+ color:white;
+}
+
+#Link {
+ width: 55%;
+ margin-right:5%;
+ float:right;
+ color:white;
+}
+
+.TableDetails td {
+background:none;
+/*
+padding: 12px 20px;
+margin: 8px 0;
+*/
+box-sizing: border-box;
+border: none;
+border-bottom: 3px solid black;
+font-family: 'Raleway';
+color:white;
+}
+
+.Tables {
+width:100%;
+min-height:auto;
+clear: both;
+}

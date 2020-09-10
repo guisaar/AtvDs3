@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Arquivar Documentos</title>
+    <link href='https://fonts.googleapis.com/css?family=Raleway:900,300' rel='stylesheet' type='text/css'/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/CssSite.css}"/>
+</head>
+<body>
+<div class="containerForm">
+    <hr/>
+    <h1>Faça Upload do seu arquivo - Maximo Atual(15MB)</h1>
+    <h3 class="button" id="button" th:each="event : ${events}"><a th:href="${(#mvc.url('EC#detailsEvent').arg(0, event.actId)).build()}"><img th:src="@{/css/backicon.png}" alt="add" width=18px height=18px style="float:left"/><div id="ladinho2">Voltar</div></a></h3>
+    <form method="POST" enctype="multipart/form-data">
+        <div class="row">
+            <div class="input-field-col-s6" style="height:79px;">
+                Arquivo:<input type="file" name="file" style="padding:7px 20px"> <br/><br/>
+            </div>
+            <div class="input-field-col-s4">
+                Data:<br><input type="date" value="" name="date"/>
+            </div>
+        </div><br>
+        <br><center><button type="submit" class="button">Enviar</button></center>
+    </form>
+    <hr/>
+    <div th:if="${message}">
+        <h2 th:text="${message}"/>
+    </div>
+
+</div>
+</body>
+</html>

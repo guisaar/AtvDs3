@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalhes Da Atividade</title>
+    <link href='https://fonts.googleapis.com/css?family=Raleway:900,300' rel='stylesheet' type='text/css'/>
+    <link rel="stylesheet" type="text/css" href="css/CssSite.css"/>
+</head>
+<body>
+<div class="container">
+    <div th:each="event : ${event}">
+        <h1><span th:text="${event.name}"></span></h1>
+    </div>
+    <h3 style="clear: both;" class="button" id="button"><a href="/event"><img src="css/backicon.png" alt="add" width=18px height=18px style="float:left"/><div id="ladinho2">Lista de Atividades</div></a></h3>
+    <div class="Tables">
+    <table class="TableDetails" id="Describe">
+    <thead><tr><th>Descrição:</th></tr></thead>
+        <tbody><tr th:each="event : ${event}">
+    <td><span th:text="${event.describe}"></span></td>
+</tr></tbody></table>
+
+
+    <table class="TableDetails" id="Discipline">
+        <thead><tr><th>Disciplina:</th></tr></thead>
+        <tbody><tr th:each="event : ${event}">
+            <td><span th:text="${event.discipline}"></span></td>
+        </tr></tbody></table>
+
+    <table class="TableDetails" id="Date">
+        <thead><tr><th>Data:</th></tr></thead>
+        <tbody><tr th:each="event : ${event}">
+            <td><span th:text="${event.date}"></span></td>
+        </tr></tbody></table>
+
+
+    <table class="TableDetails" id="TimeTable">
+        <thead><tr><th>Horario:</th></tr></thead>
+        <tbody><tr th:each="event : ${event}">
+            <td><span th:text="${event.timetable}"></span></td>
+        </tr></tbody></table>
+
+
+    <table class="TableDetails" id="Link">
+        <thead><tr><th>Link:</th></tr></thead>
+        <tbody><tr th:each="event : ${event}">
+            <td><a th:href="@{'http://' + ${event.link}}"><span th:text="${event.link}"></span></a></td>
+        </tr></tbody></table>
+
+    </div>
+</div>
+<div class="containerForm" id="Details" style="margin-top:20px;">
+    <h1>Adicionar Links de apoio</h1>
+    <th:block th:include="mensagemValidacao"></th:block>
+    <form method="POST" >
+        <div class="row">
+            <div class="input-field-col-s4">
+                Aluno:<br><input type="text" name="author"/>
+            </div>
+            <div class="input-field-col-s6">
+                Link de apoio:<br><input type="text" name="supportLink"/>
+            </div>
+        </div><br><br>
+        <center><button type="submit" class="button">Adicionar</button></center>
+    </form>
+</div>
+<div class="container" style="margin-top:20px;min-height:100px;">
+    <h1>Links de apoio de outros alunos</h1>
+    <table class="Table">
+        <thead>
+        <tr>
+            <th>Aluno</th>
+            <th>Link de Ajuda</th>
+            <th>Deletar</th>
+        </tr>
+        </thead><tbody>
+    <tr th:each="inf : ${inf}">
+        <td><span th:text="${inf.author}"></span></td>
+        <td><a th:href="@{'http://' + ${inf.supportLink}}"><span th:text="${inf.supportLink}"></span></a></td>
+        <td><a th:href="${(#mvc.url('EC#delectInf').arg(0, inf.authorId)).build()}"><img src="css/Dellicon.png" alt="add" width=32px height=32px /></a></td>
+
+    </tr>
+    </tbody>
+    </table>
+</div>
+
+<div class="container" style="margin-top:20px;min-height:100px;">
+    <h1>Arquivos</h1>
+    <table class="Table">
+        <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Tamanho(MB)</th>
+            <th>Data</th>
+            <th id="diferente" th:each="event : ${event}"><a th:href="@{${(#mvc.url('FC#index').arg(0, event.actId)).build()}}"><img src="css/icon.png" alt="add" width=32px height=32px /> <div id="ladinho" style="font-size:28px">ADD</div></a></th>
+        </tr>
+        </thead><tbody>
+    <tr th:each="files : ${files}">
+        <td><a th:href="@{${(#mvc.url('FC#download').arg(0, files.namId)).build()}}"><span th:text="${files.name}"> </span></a></td>
+        <td><span th:text="${files.size}"></span></td>
+        <td><span th:text="${files.date}"></span></td>
+    </tr>
+    </tbody>
+    </table>
+</div>
+</body>
+</html>

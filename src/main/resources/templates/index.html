@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Atividades</title>
+    <link href='https://fonts.googleapis.com/css?family=Raleway:900,300' rel='stylesheet' type='text/css'/>
+    <link rel="stylesheet" type="text/css" href="css/CssSite.css"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <h1 th:each="Count : ${Count}">Lista de Atividades - Atual(<span th:text="${Count.EventCount}"></span>)</h1>
+    <table class="Table">
+        <thead>
+        <tr>
+            <th>Titulo</th>
+            <th>Disciplina</th>
+            <th>Data</th>
+            <th>Horário</th>
+            <th>Deletar</th>
+            <th id="diferente"><a href="/registerEvent"><img src="css/icon.png" alt="add" width=32px height=32px /> <div id="ladinho">ADD</div></a></th>
+        </tr>
+        </thead><tbody>
+        <tr th:each="event : ${events}">
+            <td><a th:href="${(#mvc.url('EC#detailsEvent').arg(0, event.actId)).build()}"><span th:text="${event.name}"></span></a></td>
+        <td><span th:text="${event.discipline}"></span></td>
+        <td><span th:text="${event.date}"></span></td>
+        <td><span th:text="${event.timetable}"></span></td>
+<td><a th:href="${(#mvc.url('EC#delectEvent').arg(0, event.actId)).build()}"><img src="css/Dellicon.png" alt="add" width=32px height=32px /></a></td>
+        </tr>
+</tbody>
+    </table>
+</div>
+</body>
+</html>

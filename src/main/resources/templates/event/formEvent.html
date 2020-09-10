@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastrar Atividade</title>
+    <link href='https://fonts.googleapis.com/css?family=Raleway:900,300' rel='stylesheet' type='text/css'/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" href="css/CssSite.css" media="screen" />
+
+</head>
+<body style="overflow-y:hidden;">
+<div class="containerForm">
+<h1>Cadastrar Atividades</h1>
+    <th:block th:include="mensagemValidacao"></th:block>
+    <h3 class="button" id="button"><a href="/event"><img src="css/backicon.png" alt="add" width=18px height=18px style="float:left"/><div id="ladinho2">Lista de Atividades</div></a></h3>
+<form method="post">
+    <div class="row">
+        <div class="input-field-col-s6">
+            Titulo:<br><input type="text" value="" name="name"/>
+        </div>
+   <div class="input-field-col-s4">
+       Disciplina da Atividade:<br><input type="text" value="" name="discipline"/>
+   </div>
+        <div class="input-field-col-s6">
+            Link:<br><input type="text" value="" name="link"/>
+        </div>
+       <div class="input-field-col-s2">
+       Horario:<br><input type="text" value="" name="timetable"/>
+       </div>
+       <div class="input-field-col-s3">
+           Data:<br><input type="date" value="" name="date"/>
+       </div>
+        <div class="input-field-col-s10">
+            Descrição:<br><input type="text" value="" name="describe"/>
+        </div>
+    </div><br>
+
+    <br>    <center><button type="submit" class="button">Salvar</button></center>
+</form>
+</div>
+</body>
+</html>
