@@ -15,6 +15,24 @@ public class FilesDoc {
     private String date, name, location;
 
 
+    private String publicId;
+    private String format;
+
+    public String getFormat() {
+        return format;
+    }
+
+    public void setFormat(String format) {
+        this.format = format;
+    }
+
+    public String getPublicId() {
+        return publicId;
+    }
+
+    public void setPublicId(String publicId) {
+        this.publicId = publicId;
+    }
     @ManyToOne
     private Event event;
 
