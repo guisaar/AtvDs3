@@ -1,5 +1,5 @@
 :root {
-  --main-bg-color:#2E75FF /*#57b6d2*/;
+  --main-bg-color:#27BEFF /*#57b6d2*/;
   --site-size: 900px;
 }
 html {
@@ -108,7 +108,7 @@ input[type=text]:focus {
   font-weight:bold;
 }
 .button {
-  background-color: #26a69a; /* Green */
+  background-color: #2180FF; /* Green */
   border: none;
   color: white;
   justify-content: center;
