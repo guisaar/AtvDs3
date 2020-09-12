@@ -1,5 +1,5 @@
 :root {
-  --main-bg-color:#313793cf /*#57b6d2*/;
+  --main-bg-color:#2E75FF /*#57b6d2*/;
   --site-size: 900px;
 }
 html {
@@ -59,22 +59,6 @@ height:auto;
 text-align:center;
 color:white;
 height:18px;
-}
-.Table #diferente {
- border-bottom:none;
- width:10%;
-background-color:#26a69a;
-}
-.Table #diferente img{
- float:left;
-}
-.Table #diferente #ladinho{
- float:left;
-   align-items: center;
-   justify-content: center;
- font-weight:bold;
- font-size:22px;
- font-family: 'Material Icons';
 }
 
 input {
@@ -140,78 +124,6 @@ color:red;
 }
 #button{
 padding: 7px 5px;
-}
-#ladinho2{
-float:left;
-align-items: center;
-justify-content: center;
- }
-
-
-
-.TableDetails {
-width:60%;
-height:30px;
-}
-.TableDetails th {
- text-align:left;
- color:white;
- width:18%;
-}
-
-#Describe {
- width: 30%;
- margin-right:5%;
- float:right;
- color:white;
-}
-
-#Describe td {
- min-height:120px;
- border: 3px solid black;
-margin: 8px 0;
-padding: 12px 20px;
-
-}
-#Discipline {
- width: 15%;
- margin-right:5%;
- float:right;
- color:white;
-}
-
-#TimeTable {
- width: 15%;
- margin-right:5%;
- float:right;
- color:white;
-}
-
-#Date {
- width: 15%;
- margin-right:5%;
- float:right;
- color:white;
-}
-
-#Link {
- width: 55%;
- margin-right:5%;
- float:right;
- color:white;
-}
-
-.TableDetails td {
-background:none;
-/*
-padding: 12px 20px;
-margin: 8px 0;
-*/
-box-sizing: border-box;
-border: none;
-border-bottom: 3px solid black;
-font-family: 'Raleway';
-color:white;
 }
 
 .Tables {
